@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom";
 import tutorials from "../data/tutorials";
-import { Link } from "react-router-dom";
+import { useWindowSize } from "react-use";
 import { useState } from "react";
+import StepScreen from "../components/Screen";
+import CompletionScreen from "../components/CompletedTut";
 
 export default function Tutorial() {
     const { slug } = useParams();
@@ -12,11 +14,12 @@ export default function Tutorial() {
     const [stepIndex, setStepIndex] = useState(0);
     const [showHint, setShowHint] = useState(false);
 
-    const step = tutorial.steps[stepIndex];
+    const isCompleted = stepIndex === tutorial.steps.length
+    const step = tutorial.steps[stepIndex] || null;
 
     const handleCorrectClick = () => {
         setShowHint(false);
-        if (stepIndex < tutorial.steps.length - 1) {
+        if (stepIndex < tutorial.steps.length) {
             setStepIndex(stepIndex + 1);
         }
     };
@@ -25,7 +28,7 @@ export default function Tutorial() {
         setStepIndex(0);
         setShowHint(false);
     };
-
+    
     return (
         <div className="min-h-screen bg-gray-50 px-4 py-6">
             <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
@@ -36,10 +39,18 @@ export default function Tutorial() {
                         {tutorial.title}
                     </h1>
 
-                    <div className="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded mb-6">
-                        <strong>Step {stepIndex + 1}:</strong>{" "}
-                        {showHint ? `HINT: ${step.instruction}` : step.instruction}
-                    </div>
+                    {!isCompleted && (
+                        <div className="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded mb-6">
+                            <strong>Step {stepIndex + 1}:</strong>{" "}
+                            {showHint ? `HINT: ${step.instruction}` : step.instruction}
+                        </div>
+                    )}
+
+                    {isCompleted && (
+                        <div className="bg-green-50 border-l-4 border-green-600 p-4 rounded mb-6">
+                            🎉 Tutorial Completed Successfully!
+                        </div>
+                    )}
 
                     {/* Progress */}
                     <div className="flex gap-2 mb-6">
@@ -83,119 +94,19 @@ export default function Tutorial() {
                 {/* RIGHT PHONE allign */}
                 <div className="flex justify-center">
                     <div className="relative w-65 sm:w-75 md:w-85 lg:w-90">
-                        <div className="bg-black rounded-[2.5rem] p-3 shadow-xl">
-                            <img
-                                src={step.img}
-                                alt={step.title}
-                                className="rounded-4xl w-full h-auto"
-                            />
+                        <div className="bg-black rounded-[2.5rem] p-3 shadow-xl aspect-[9/19.5] w-full transition-opacity duration-300 ease-in-out">
 
-                            {/* CLICK SPOT */}
-                            {step.clickSpot.map((spot) => (
-                                <button
-                                    key={spot.id}
-                                    aria-label={spot.id}
-                                    onClick={() => {
-                                        handleCorrectClick();
-                                    }}
-                                    className={`absolute bg-transparent border-none cursor-pointer ${showHint ? "ring-4 ring-yellow-400" : ""
-                                        }`}
-                                    style={
-                                        {
-                                            top: spot.top,
-                                            left: spot.left,
-                                            width: spot.width,
-                                            height: spot.height
-                                        }
-                                    }
-                                />
-                            ))}
+                            {isCompleted ? (
+                                <CompletionScreen resetTutorial={resetTutorial} />
+                            ) : (
+                                <StepScreen step={step}
+                                    showHint={showHint}
+                                    handleCorrectClick={handleCorrectClick} />
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
-        //     <div className="max-w-4xl mx-auto p-4">
-        //   <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">
-        //     {tutorial.title}
-        //   </h1>
-
-        //   {/* Instruction */}
-        //   <div className="bg-indigo-50 border-l-4 border-indigo-600 p-4 mb-4">
-        //     <strong>Step {stepIndex + 1}:</strong>{" "}
-        //     {showHint ? `HINT: ${step.instruction}` : step.instruction}
-        //   </div>
-
-        //   {/* Progress dots */}
-        //   <div className="flex justify-center gap-2 mb-6">
-        //     {tutorial.steps.map((_, i) => (
-        //       <div
-        //         key={i}
-        //         className={`w-3 h-3 rounded-full ${
-        //           i === stepIndex ? "bg-indigo-600" : "bg-gray-300"
-        //         }`}
-        //       />
-        //     ))}
-        //   </div>
-
-        //   {/* Phone Screen */}
-        //   {step.id !== "completion" ? (
-        //     <div className="relative bg-black rounded-3xl p-3 shadow-lg">
-        //       <img
-        //         src={step.img}
-        //         alt={step.title}
-        //         className="rounded-2xl w-full"
-        //       />
-
-        //       <button
-        //         onClick={handleCorrectClick}
-        //         className={`absolute inset-0 ${
-        //           showHint ? "ring-4 ring-yellow-400" : ""
-        //         }`}
-        //         aria-label="clickable-area"
-        //       />
-        //     </div>
-        //   ) : (
-        //     <div className="bg-green-50 p-10 rounded-2xl text-center">
-        //       <div className="text-5xl mb-4">✅</div>
-        //       <h2 className="text-2xl font-bold text-green-700">
-        //         Payment Successful!
-        //       </h2>
-        //       <p className="text-gray-600 mt-2">
-        //         You’ve successfully learned how to send money using PhonePe.
-        //       </p>
-        //     </div>
-        //   )}
-
-        //   {/* Controls */}
-        //   <div className="flex flex-wrap justify-between mt-6 gap-3">
-        //     <button
-        //       disabled={stepIndex === 0}
-        //       onClick={() => setStepIndex(stepIndex - 1)}
-        //       className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
-        //     >
-        //       Previous
-        //     </button>
-
-        //     <button
-        //       onClick={() => setShowHint(true)}
-        //       className="px-4 py-2 bg-yellow-400 rounded"
-        //     >
-        //       Show Hint
-        //     </button>
-
-        //     <button
-        //       onClick={resetTutorial}
-        //       className="px-4 py-2 bg-red-500 text-white rounded"
-        //     >
-        //       Start Over
-        //     </button>
-        //   </div>
-        // </div>
     )
 }

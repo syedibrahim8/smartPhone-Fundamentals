@@ -13,14 +13,16 @@ const tutorials = [
           "This is the PhonePe home screen. Tap on 'To mobile number' under Money Transfers.",
         actionId: "to-mobile-button",
         next: "sendmoney-screen",
-        clickSpot:[{
-          id: "toMobile",
-          top:"38%",
-          left:"8%",
-          width:"18%",
-          height:"13%",
-          onClick:() => alert("To Mobile Number Clicked")
-        }]
+        clickSpot: [
+          {
+            id: "toMobile",
+            top: "38%",
+            left: "8%",
+            width: "18%",
+            height: "13%",
+            onClick: () => alert("To Mobile Number Clicked"),
+          },
+        ],
       },
       {
         id: "sendmoney-screen",
@@ -32,13 +34,13 @@ const tutorials = [
         clickSpot: [
           {
             id: "newPayment",
-            top:"89%",
-            left:"54%",
-            width:"37%",
-            height:"6%",
-            onClick:() => alert("New Payment Clicked")
-          }
-        ]
+            top: "89%",
+            left: "54%",
+            width: "37%",
+            height: "6%",
+            onClick: () => alert("New Payment Clicked"),
+          },
+        ],
       },
       {
         id: "selectcontact-screen",
@@ -49,14 +51,14 @@ const tutorials = [
         next: "searchcontact-screen",
         clickSpot: [
           {
-            id: "newPayment",
-            top:"20%",
-            left:"9%",
-            width:"83%",
-            height:"6%",
-            onClick:() => alert("select Contact Clicked")
-          }
-        ]
+            id: "searchContact",
+            top: "20%",
+            left: "9%",
+            width: "83%",
+            height: "6%",
+            onClick: () => alert("select Contact Clicked"),
+          },
+        ],
       },
       {
         id: "searchcontact-screen",
@@ -67,14 +69,14 @@ const tutorials = [
         next: "pay-screen",
         clickSpot: [
           {
-            id: "newPayment",
-            top:"26%",
-            left:"9%",
-            width:"83%",
-            height:"7%",
-            onClick:() => alert("select Contact Clicked")
-          }
-        ]
+            id: "tapToSelect",
+            top: "26%",
+            left: "9%",
+            width: "83%",
+            height: "7%",
+            onClick: () => alert("select Contact Clicked"),
+          },
+        ],
       },
       {
         id: "pay-screen",
@@ -82,17 +84,35 @@ const tutorials = [
         img: "/phonepe/payAmount.PNG",
         instruction: "Tap Pay and enter your UPI PIN.",
         actionId: "pay",
+        next: "upi-screen",
+        clickSpot: [
+          {
+            id: "Pay",
+            top: "53%",
+            left: "5%",
+            width: "90%",
+            height: "7%",
+            onClick: () => alert("select Contact Clicked"),
+          },
+        ],
+      },
+      {
+        id: "upi-screen",
+        title: "Enter UPI",
+        img: "/phonepe/upi.PNG",
+        instruction: "Enter your UPI pin and click SUBMIT button.",
+        actionId: "upi",
         next: "completion",
         clickSpot: [
           {
-            id: "newPayment",
-            top:"53%",
-            left:"5%",
-            width:"90%",
-            height:"7%",
-            onClick:() => alert("select Contact Clicked")
-          }
-        ]
+            id: "Upi",
+            top: "70%",
+            left: "5%",
+            width: "90%",
+            height: "25%",
+            onClick: () => alert("select Contact Clicked"),
+          },
+        ],
       },
     ],
   },

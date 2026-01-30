@@ -5,6 +5,7 @@ import Footer from "./components/Footer"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Tutorial from "./pages/Tutorial"
+import NF from "./pages/NF.jsx"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
               <Route path="/" element={<Home/>} />
               <Route path="/about" element={<About/>} />
               <Route path="/tutorial/:slug" element={<Tutorial/>}/>
+              <Route path="*" element={<NF/>}/>
             </Routes>
           </main>
           <Footer />
