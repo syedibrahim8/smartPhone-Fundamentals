@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import tutorials from "../data/tutorials";
-import { useWindowSize } from "react-use";
 import { useState } from "react";
 import StepScreen from "../components/Screen";
 import CompletionScreen from "../components/CompletedTut";

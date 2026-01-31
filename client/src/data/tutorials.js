@@ -11,8 +11,6 @@ const tutorials = [
         img: "/phonepe/payHome.PNG",
         instruction:
           "This is the PhonePe home screen. Tap on 'To mobile number' under Money Transfers.",
-        actionId: "to-mobile-button",
-        next: "sendmoney-screen",
         clickSpot: [
           {
             id: "toMobile",
@@ -29,8 +27,6 @@ const tutorials = [
         title: "New Payment",
         img: "/phonepe/newPay.PNG",
         instruction: "Tap on New Payment to send money to a contact.",
-        actionId: "new-payment",
-        next: "selectcontact-screen",
         clickSpot: [
           {
             id: "newPayment",
@@ -47,8 +43,6 @@ const tutorials = [
         title: "Select Contact",
         img: "/phonepe/selectContact.PNG",
         instruction: "Search and select the contact you want to pay.",
-        actionId: "search-contact",
-        next: "searchcontact-screen",
         clickSpot: [
           {
             id: "searchContact",
@@ -65,8 +59,6 @@ const tutorials = [
         title: "Choose Contact",
         img: "/phonepe/chooseContact.PNG",
         instruction: "Tap the contact to proceed payment.",
-        actionId: "tap-to-select",
-        next: "pay-screen",
         clickSpot: [
           {
             id: "tapToSelect",
@@ -83,8 +75,6 @@ const tutorials = [
         title: "Pay Amount",
         img: "/phonepe/payAmount.PNG",
         instruction: "Tap Pay and enter your UPI PIN.",
-        actionId: "pay",
-        next: "upi-screen",
         clickSpot: [
           {
             id: "Pay",
@@ -101,8 +91,6 @@ const tutorials = [
         title: "Enter UPI",
         img: "/phonepe/upi.PNG",
         instruction: "Enter your UPI pin and click SUBMIT button.",
-        actionId: "upi",
-        next: "completion",
         clickSpot: [
           {
             id: "Upi",
