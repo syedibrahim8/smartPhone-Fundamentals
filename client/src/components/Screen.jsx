@@ -18,7 +18,7 @@ export default function StepScreen({ step, showHint, handleCorrectClick, previou
                             handleCorrectClick()
                         }
                     }}
-                    className={`absolute bg-transparent border-none cursor-pointer ${showHint ? "ring-4 ring-yellow-400" : ""}`}
+                    className={`absolute bg-transparent cursor-pointer ${showHint ? "outline-dashed outline-yellow-400" : ""}`}
                     style={{
                         top: spot.top,
                         left: spot.left,

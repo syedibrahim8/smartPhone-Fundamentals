@@ -28,12 +28,11 @@ export default function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl justify-between items-center px-4 py-3 sm:px-6 lg:px-8">
-        <Link
-          to="/"
-          className="text-xl font-bold sm:text-2xl bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent outline-none ring-offset-background transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
+        <div
+          className="text-xl font-bold sm:text-3xl bg-linear-to-r from-primary to-primary/80 bg-clip-text text-transparent outline-none ring-offset-background transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
         >
           Teach Parents Smartphone
-        </Link>
+        </div>
 
         {/* Desktop nav */}
         <div className="hidden sm:flex items-center gap-1">
@@ -43,7 +42,7 @@ export default function Navbar() {
               variant="ghost"
               size="sm"
               asChild
-              className="text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-2"
+              className="text-foreground sm:text-xl hover:bg-accent hover:text-accent-foreground focus-visible:ring-2"
             >
               <Link to={to}>{label}</Link>
             </Button>
@@ -62,7 +61,7 @@ export default function Navbar() {
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[280px] sm:max-w-sm">
+          <SheetContent side="right" className="w-70 sm:max-w-sm">
             <SheetHeader>
               <SheetTitle>Menu</SheetTitle>
             </SheetHeader>

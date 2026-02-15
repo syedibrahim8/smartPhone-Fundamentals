@@ -97,7 +97,7 @@ export default function Tutorial() {
 
                 {/* RIGHT PHONE align */}
                 <div className="flex justify-center">
-                    <div className="relative w-[280px] sm:w-[320px] md:w-[340px] lg:w-[360px]">
+                    <div className="relative w-70 sm:w-[320px] md:w-85 lg:w-90">
                         <div className="relative bg-black rounded-[2.5rem] p-3 shadow-xl aspect-[9/19.5] w-full transition-opacity duration-300 ease-in-out overflow-hidden">
 
                             {isCompleted ? (
