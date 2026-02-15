@@ -33,6 +33,14 @@ const tutorials = [
             left: "54%",
             width: "37%",
             height: "6%",
+            onClick : "handleCorrectClick",
+          },
+          {
+            id: "back",
+            top: "8%",
+            left: "6%",
+            width: "8%",
+            height: "4%",
           },
         ],
       },
@@ -49,6 +57,13 @@ const tutorials = [
             width: "83%",
             height: "6%",
           },
+          {
+            id: "back",
+            top: "7%",
+            left: "6%",
+            width: "8%",
+            height: "5%",
+          }
         ],
       },
       {
@@ -64,6 +79,13 @@ const tutorials = [
             width: "83%",
             height: "7%",
           },
+          {
+            id: "back",
+            top: "9%",
+            left: "9%",
+            width: "9%",
+            height: "6%",
+          }
         ],
       },
       {
@@ -78,6 +100,13 @@ const tutorials = [
             left: "5%",
             width: "90%",
             height: "7%",
+          },
+          {
+            id: "back",
+            top: "7%",
+            left: "6%",
+            width: "8%",
+            height: "5%",
           },
         ],
       },

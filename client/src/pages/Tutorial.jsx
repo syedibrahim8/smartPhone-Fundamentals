@@ -23,6 +23,11 @@ export default function Tutorial() {
         }
     };
 
+    const previous = () => {
+        setShowHint(false);
+        setStepIndex(stepIndex - 1)
+    }
+
     const resetTutorial = () => {
         setStepIndex(0);
         setShowHint(false);
@@ -90,17 +95,18 @@ export default function Tutorial() {
                     </div>
                 </div>
 
-                {/* RIGHT PHONE allign */}
+                {/* RIGHT PHONE align */}
                 <div className="flex justify-center">
-                    <div className="relative w-65 sm:w-75 md:w-85 lg:w-90">
-                        <div className="bg-black rounded-[2.5rem] p-3 shadow-xl aspect-[9/19.5] w-full transition-opacity duration-300 ease-in-out">
+                    <div className="relative w-[280px] sm:w-[320px] md:w-[340px] lg:w-[360px]">
+                        <div className="relative bg-black rounded-[2.5rem] p-3 shadow-xl aspect-[9/19.5] w-full transition-opacity duration-300 ease-in-out overflow-hidden">
 
                             {isCompleted ? (
                                 <CompletionScreen resetTutorial={resetTutorial} />
                             ) : (
                                 <StepScreen step={step}
                                     showHint={showHint}
-                                    handleCorrectClick={handleCorrectClick} />
+                                    handleCorrectClick={handleCorrectClick}
+                                    previous={previous} />
                             )}
                         </div>
                     </div>

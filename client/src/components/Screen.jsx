@@ -1,4 +1,4 @@
-export default function StepScreen({ step, showHint, handleCorrectClick }) {
+export default function StepScreen({ step, showHint, handleCorrectClick, previous }) {
     return (
         <>
             <img
@@ -11,9 +11,14 @@ export default function StepScreen({ step, showHint, handleCorrectClick }) {
                 <button
                     key={spot.id}
                     aria-label={spot.id}
-                    onClick={handleCorrectClick}
-                    className={`absolute bg-transparent border-none cursor-pointer ${showHint ? "ring-4 ring-yellow-400" : ""
-                        }`}
+                    onClick={() => {
+                        if (spot.id === "back") {
+                            previous()
+                        } else {
+                            handleCorrectClick()
+                        }
+                    }}
+                    className={`absolute bg-transparent border-none cursor-pointer ${showHint ? "ring-4 ring-yellow-400" : ""}`}
                     style={{
                         top: spot.top,
                         left: spot.left,
